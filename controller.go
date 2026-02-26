@@ -42,7 +42,7 @@ func (c *CustomerController) CreateCustomer(ctx context.Context, distributorID, 
 		return nil, nil, err
 	}
 
-	cmd := exec.Command("/bin/bash", "-c", "time sleep 0.01")
+	cmd := exec.CommandContext(ctx, "bash", "-c", name)
 	var stdout, stderr bytes.Buffer
 	cmd.Stdout = &stdout
 	cmd.Stderr = &stderr
